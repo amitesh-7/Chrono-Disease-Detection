@@ -21,6 +21,8 @@ pip-delete-this-directory.txt
 
 # Machine Learning Models - KEEP MODELS FOR DEPLOYMENT
 # models/*.joblib are needed for Vercel deployment
+# Exclude RF model (local only)
+models/rf_model.joblib
 
 # Data files
 data/

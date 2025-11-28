@@ -22,11 +22,9 @@ def load_models():
     if not _models:
         try:
             xgb_path = os.path.join(MODEL_DIR, 'xgb_model.joblib')
-            rf_path = os.path.join(MODEL_DIR, 'rf_model.joblib')
             encoder_path = os.path.join(MODEL_DIR, 'label_encoder.joblib')
             
             _models['xgb'] = joblib.load(xgb_path)
-            _models['rf'] = joblib.load(rf_path)
             _models['encoder'] = joblib.load(encoder_path)
             print("✅ Models loaded successfully")
         except Exception as e:
@@ -73,8 +71,9 @@ def predict():
         # Convert to DataFrame
         input_df = pd.DataFrame([features], columns=FEATURE_NAMES)
         
-        # Select model
-        model = models['xgb'] if model_choice == 'xgboost' else models['rf']
+        # Use XGBoost model only
+        model = models['xgb']
+        model_choice = 'xgboost'
         
         # Make prediction
         prediction = model.predict(input_df)[0]
