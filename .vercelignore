@@ -11,16 +11,7 @@ dist/
 build/
 notebooks/
 data/
-*.ipynb
 .ipynb_checkpoints/
-start.ps1
-test_api.py
-DEPLOYMENT.md
-ARCHITECTURE.md
-MODEL_LOCATION.md
-static/
-templates/
-app.py
 .vscode/
 .idea/
 *.log

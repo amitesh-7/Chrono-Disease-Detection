@@ -19,11 +19,8 @@ pip-delete-this-directory.txt
 .ipynb_checkpoints
 *.ipynb
 
-# Machine Learning Models (large files)
-models/*.joblib
-models/*.pkl
-models/*.h5
-models/*.pb
+# Machine Learning Models - KEEP MODELS FOR DEPLOYMENT
+# models/*.joblib are needed for Vercel deployment
 
 # Data files
 data/
