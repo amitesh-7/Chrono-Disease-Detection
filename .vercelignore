@@ -15,3 +15,4 @@ data/
 .idea/
 *.log
 *.ipynb
+models/rf_model.joblib
