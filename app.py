@@ -51,11 +51,6 @@ def index():
     """Serve the main page"""
     return send_from_directory('public', 'index.html')
 
-@app.route('/<path:path>')
-def serve_static(path):
-    """Serve static files"""
-    return send_from_directory('public', path)
-
 @app.route('/api/predict', methods=['POST'])
 def predict():
     """API endpoint for disease prediction"""
@@ -125,6 +120,19 @@ def get_features():
         'features': FEATURE_NAMES,
         'count': len(FEATURE_NAMES)
     })
+
+@app.route('/<path:path>')
+def serve_static(path):
+    """Serve static files"""
+    try:
+        return send_from_directory('public', path)
+    except:
+        return send_from_directory('public', 'index.html')
+
+@app.errorhandler(404)
+def not_found(e):
+    """Handle 404 errors"""
+    return jsonify({'error': 'Not Found', 'message': 'The requested resource was not found'}), 404
 
 if __name__ == '__main__':
     load_models()  # Pre-load models
